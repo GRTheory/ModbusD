@@ -10,13 +10,13 @@ Modbus协议通过这些请求、响应指令，实现了主设备对从设备�
 
 Modbus RTU数据帧由四部分组成，设备地址，功能码，数据和校验。
 
-![](D:\document\ModbusD\photo\1.png)
+![](https://github.com/ForbiddenR/modbus-png/raw/main/1.png)
 
 设备地址占1个字节，范围是0~255之间。0是广播地址，1~247是从站设备地址，248~255保留不用。
 
 功能码占一个字节，由协议明确规定，表中列出了一些常用的功能码。譬如03功能码是读保存寄存器，16功能码是写多个寄存器。
 
-![](D:\document\ModbusD\photo\2.png)
+![](https://github.com/ForbiddenR/modbus-png/raw/main/2.png)
 
 数据部分0~252字节，其长度和内容由功能码决定。功能码不同，数据部分的定义不尽相同。
 
@@ -30,11 +30,11 @@ Modbus RTU数据帧由四部分组成，设备地址，功能码，数据和校�
 
    Modbus RTU主站设备请求帧格式：
 
-   ![](D:\document\ModbusD\photo\3.png)
+   ![](https://github.com/ForbiddenR/modbus-png/raw/main/3.png)
 
    2号站设备响应帧格式：
 
-   ![](D:\document\ModbusD\photo\4.png)
+   ![](https://github.com/ForbiddenR/modbus-png/raw/main/4.png)
 
    
 
@@ -44,11 +44,11 @@ Modbus RTU数据帧由四部分组成，设备地址，功能码，数据和校�
 
    Modbus RTU主站设备请求帧格式：
 
-   ![](D:\document\ModbusD\photo\5.png)
+   ![](https://github.com/ForbiddenR/modbus-png/raw/main/5.png)
 
    2号站设备响应帧格式：
 
-   ![](D:\document\ModbusD\photo\6.png)
+   ![](https://github.com/ForbiddenR/modbus-png/raw/main/6.png)
 
 3. 功能码-0x02（读离散量输入）
 
@@ -56,17 +56,17 @@ Modbus RTU数据帧由四部分组成，设备地址，功能码，数据和校�
 
 ​       Modbus RTU主站设备请求帧格式：
 
-![](D:\document\ModbusD\photo\7.png)
+![](https://github.com/ForbiddenR/modbus-png/raw/main/7.png)
 
 ​     2号站设备响应帧格式：
 
-![](D:\document\ModbusD\photo\8.png)
+![](https://github.com/ForbiddenR/modbus-png/raw/main/8.png)
 
 ### 数据传输模式
 
 Modbus RTU协议数据帧是没有起始符和结束符，所以两个数据帧之间需要靠时间间隔来区分。协议中规定信息帧发送至少要有3.5个字符时间的停顿间隔。即在一个数据帧的最后一个字符传输完成之后，需要至少3.5个字符时间的停顿标定数据帧的结束，一个新的数据帧可在此停顿之后开始。如果一个新消息在小于3.5个字符时间内接着前个消息开始，接受的设备将认为它是前一数据帧的延续，这将导致CRC校验出错。同时整个数据帧必须作为一连续的流传输。如果在帧完成之前有超过1.5字符时间的停顿时间，接受设备将刷新不完整的数据帧从而认为存在丢包现象。
 
-![](D:\document\ModbusD\photo\9.png)
+![](https://github.com/ForbiddenR/modbus-png/raw/main/9.png)
 
 在Modbus-RTU通信协议中，每个数据帧包括设备地址、功能码、数据域和校验码四个部分，其中数据域中的数据是按照字节进行传输的。在每个字节的传输过程中，包含了一个起始位（Start Bit）、8个数据位（Data Bits）和一个停止位（Stop Bit），这个组合被称为一个“字符”（Character），它是数据帧中最基本的单位。
 
